@@ -1,6 +1,18 @@
-export const LoftSign: React.FC<{ width: number }> = ({ width }) => {
+interface IProps {
+  width?: number;
+  height?: number;
+  stroke?: string;
+}
+
+export const LoftSign: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
-    <svg width={width} height={width * 2.2} viewBox="0 0 108 233" fill="none">
+    <svg
+      width={width || (height || 220) / 2.2}
+      height={height || (width || 100) * 2.2}
+      stroke={stroke || "currentColor"}
+      viewBox="0 0 108 233"
+      fill="none"
+    >
       <g filter="url(#filter0_d_2_23)">
         <path d="M4 0H104V224.964H4V0Z" fill="black" />
       </g>
@@ -65,14 +77,14 @@ export const LoftSign: React.FC<{ width: number }> = ({ width }) => {
   );
 };
 
-export const LoftLogo = () => {
+export const LoftLogo_1: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      width="40"
-      height="40"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 102 100"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      stroke={stroke || "currentColor"}
     >
       <circle cx="50" cy="50" r="50" fill="black" />
       <path
@@ -87,14 +99,41 @@ export const LoftLogo = () => {
   );
 };
 
-export const MagnifyingGlass = () => {
+export const LoftLogo: React.FC<IProps> = ({ width, height, stroke }) => {
+  return (
+    <svg
+      stroke={stroke || "currentColor"}
+      width={width || height || "60"}
+      height={height || width || "60"}
+      viewBox="-1 -1 62 62"
+      fill="none"
+    >
+      <circle cx="30" cy="30" r="30" fill="black" />
+      <path
+        d="M29.9744 40.6465C29.0224 40.6465 28.0424 40.5625 27.0344 40.3945L27.5384 36.9225C28.6211 37.1092 29.5544 37.2025 30.3384 37.2025C31.8318 37.2025 33.0264 36.8852 33.9224 36.2505C34.8184 35.6158 35.2664 34.7852 35.2664 33.7585C35.2664 33.1052 35.0798 32.5918 34.7064 32.2185C34.3331 31.8452 33.8104 31.6585 33.1384 31.6585C32.6718 31.6585 32.1584 31.7518 31.5984 31.9385L31.0384 29.2505C31.9344 28.9705 32.7464 28.5132 33.4744 27.8785C34.2211 27.2252 34.5944 26.5718 34.5944 25.9185C34.5944 25.5078 34.4358 25.1812 34.1184 24.9385C33.8198 24.6772 33.4091 24.5465 32.8864 24.5465C32.3638 24.5465 31.8224 24.6958 31.2624 24.9945C30.7024 25.2745 30.1798 25.6758 29.6944 26.1985L27.3424 23.6225C28.1264 22.8572 29.0224 22.2598 30.0304 21.8305C31.0571 21.3825 32.1211 21.1585 33.2224 21.1585C34.2491 21.1585 35.1544 21.3452 35.9384 21.7185C36.7224 22.0732 37.3291 22.5772 37.7584 23.2305C38.1878 23.8652 38.4024 24.5838 38.4024 25.3865C38.4024 26.7305 37.7958 27.9812 36.5824 29.1385C37.4598 29.5492 38.1224 30.1465 38.5704 30.9305C39.0371 31.6958 39.2704 32.5732 39.2704 33.5625C39.2704 34.8878 38.8784 36.0918 38.0944 37.1745C37.3291 38.2572 36.2371 39.1065 34.8184 39.7225C33.3998 40.3385 31.7851 40.6465 29.9744 40.6465ZM43.7596 40.6465C42.8076 40.6465 41.8276 40.5625 40.8196 40.3945L41.3236 36.9225C42.4063 37.1092 43.3396 37.2025 44.1236 37.2025C45.617 37.2025 46.8023 36.8665 47.6796 36.1945C48.5756 35.5038 49.0236 34.6078 49.0236 33.5065C49.0236 32.7225 48.7996 32.1345 48.3516 31.7425C47.9223 31.3318 47.2876 31.1265 46.4476 31.1265C45.589 31.1265 44.7676 31.3132 43.9836 31.6865L42.4156 30.5385L42.9476 21.5785H52.4676L52.2436 24.8825H46.1956L46.0276 28.0465C46.345 27.9718 46.7556 27.9345 47.2596 27.9345C48.9956 27.9345 50.3863 28.4292 51.4316 29.4185C52.4956 30.3892 53.0276 31.7238 53.0276 33.4225C53.0276 34.8038 52.6356 36.0452 51.8516 37.1465C51.0863 38.2478 50.0036 39.1065 48.6036 39.7225C47.2036 40.3385 45.589 40.6465 43.7596 40.6465Z"
+        fill="white"
+      />
+      <path
+        d="M10.3638 40.3568V22.175H13.1071V37.9953H21.3457V40.3568H10.3638Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
+
+export const MagnifyingGlass: React.FC<IProps> = ({
+  width,
+  height,
+  stroke,
+}) => {
   return (
     <svg
       fill="none"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="#555555"
-      className="h-5 w-5"
+      strokeWidth="3"
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -105,14 +144,15 @@ export const MagnifyingGlass = () => {
   );
 };
 
-export const ShareIcon = () => {
+export const ShareIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -123,14 +163,15 @@ export const ShareIcon = () => {
   );
 };
 
-export const ShoppingCart = () => {
+export const ShoppingCart: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -141,14 +182,15 @@ export const ShoppingCart = () => {
   );
 };
 
-export const ShoppingBag = () => {
+export const ShoppingBag: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -159,14 +201,15 @@ export const ShoppingBag = () => {
   );
 };
 
-export const StarIcon = () => {
+export const StarIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -177,14 +220,15 @@ export const StarIcon = () => {
   );
 };
 
-export const TrashIcon = () => {
+export const TrashIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -195,14 +239,15 @@ export const TrashIcon = () => {
   );
 };
 
-export const TagIcon = () => {
+export const TagIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -218,14 +263,15 @@ export const TagIcon = () => {
   );
 };
 
-export const XMark = () => {
+export const XMark: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="currentColor"
-      className="h-6 w-6"
+      width={width || height || 40}
+      height={height || width || 40}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -236,32 +282,29 @@ export const XMark = () => {
   );
 };
 
-export const InstagramIcon = () => {
+export const InstagramIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      width="800px"
-      height="800px"
+      stroke={stroke || "currentColor"}
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       fill="none"
-      className="h-6 w-6"
     >
       <path
         d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-        stroke="#292D32"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z"
-        stroke="#292D32"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M17.6361 7H17.6477"
-        stroke="#292D32"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -270,16 +313,16 @@ export const InstagramIcon = () => {
   );
 };
 
-export const FacebookIcon = () => {
+export const FacebookIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      fill="#000000"
-      width="800px"
-      height="800px"
+      stroke={stroke || "currentColor"}
+      fill="currentColor"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       id="facebook"
       data-name="Flat Color"
-      className="h-6 w-6"
     >
       <path
         id="primary"
@@ -289,15 +332,14 @@ export const FacebookIcon = () => {
   );
 };
 
-export function AddToCartIcon() {
+export const AddToCartIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1"
-      stroke="currentColor"
+      stroke={stroke || "currentColor"}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -310,17 +352,20 @@ export function AddToCartIcon() {
       <path d="M15 6h6m-3 -3v6" />
     </svg>
   );
-}
+};
 
-export function RemoveFromCartIcon() {
+export const RemoveFromCartIcon: React.FC<IProps> = ({
+  stroke,
+  height,
+  width,
+}) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1"
-      stroke="currentColor"
+      stroke={stroke || "currentColor"}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -334,17 +379,16 @@ export function RemoveFromCartIcon() {
       <path d="M21 3l-4 4" />
     </svg>
   );
-}
+};
 
-export function ClearCartIcon() {
+export const ClearCartIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1"
-      stroke="currentColor"
+      stroke={stroke || "currentColor"}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -357,17 +401,16 @@ export function ClearCartIcon() {
       <path d="M3 3l18 18" />
     </svg>
   );
-}
+};
 
-export function CartIcon() {
+export const CartIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={width || height || 40}
+      height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1"
-      stroke="currentColor"
+      stroke={stroke || "currentColor"}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -379,4 +422,4 @@ export function CartIcon() {
       <path d="M6 5l14 1l-1 7h-13" />
     </svg>
   );
-}
+};

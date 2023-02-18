@@ -151,12 +151,85 @@ const data = {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
     },
     {
-      name: "Denim Pants",
-      slug: "denim-pants",
+      name: "Denim Dark Pants",
+      slug: "denim-dark-pants",
       category: "Pants",
       image: {
         name: "cotton-studio",
         src: "/images/products/cotton-studio.jpg",
+      },
+      secondaryImages: [],
+      price: 75,
+      brand: undefined,
+      rating: 2.4,
+      numReviews: 14,
+      countInStock: 1,
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
+    },
+    {
+      name: "Striped Sweater",
+      slug: "striped-sweater",
+      category: "Sweaters",
+      image: {
+        name: "dom-j",
+        src: "/images/products/dom-j.jpg",
+      },
+      secondaryImages: [],
+      price: 75,
+      brand: undefined,
+      rating: 2.4,
+      numReviews: 14,
+      countInStock: 1,
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
+    },
+    {
+      name: "Black Coat",
+      slug: "black-coat",
+      category: "Coats",
+      image: {
+        name: "evg-kowalievska",
+        src: "/images/products/evg-kowalievska.jpg",
+      },
+      secondaryImages: [
+        {
+          name: "evg-kowalievska_1",
+          src: "/images/products/evg-kowalievska_1.jpg",
+        },
+      ],
+      price: 75,
+      brand: undefined,
+      rating: 2.4,
+      numReviews: 14,
+      countInStock: 1,
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
+    },
+    {
+      name: "White Bag",
+      slug: "white-bag",
+      category: "Bags",
+      image: {
+        name: "fatin-hisham",
+        src: "/images/products/fatin-hisham.jpg",
+      },
+      secondaryImages: [],
+      price: 75,
+      brand: undefined,
+      rating: 2.4,
+      numReviews: 14,
+      countInStock: 1,
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
+    },
+    {
+      name: "Denim Light Pants",
+      slug: "denim-light-pants",
+      category: "Pants",
+      image: {
+        name: "pixabay",
+        src: "/images/products/pixabay.jpg",
       },
       secondaryImages: [],
       price: 75,

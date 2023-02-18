@@ -8,8 +8,8 @@ interface IProps {
 
 const ProductItem: React.FC<IProps> = ({ product }) => {
   return (
-    <div className="mb-5 block w-2/5 rounded-lg shadow-md">
-      <div className="relative w-full overflow-hidden rounded-t-lg pb-[100%]">
+    <div className={`mb-10 w-[40%] rounded-lg shadow-md`}>
+      <div className="relative w-full overflow-hidden rounded-t-lg pb-[100%] shadow-2xl">
         <Image
           src={product.image.src}
           alt={product.image.name}
