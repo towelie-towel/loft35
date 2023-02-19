@@ -1,18 +1,11 @@
 import { ShoppingCart, FacebookIcon, InstagramIcon, LoftLogo } from "./Icons";
 import FindProducts from "./FindProducts";
-import { useState } from "react";
 
 const NavBar: React.FC = () => {
-  const [isInputOpen, toggleInput] = useState(false);
   return (
     <nav className="my-5 mx-auto flex h-auto w-11/12 items-center justify-between rounded-2xl px-4 py-3 shadow-lg">
       <LoftLogo />
-      <FindProducts
-        toggleInput={(toggle: boolean) => {
-          toggleInput(toggle);
-        }}
-        isInputOpen={isInputOpen}
-      />
+      <FindProducts />
       <div className="flex justify-between">
         <ShoppingCart height={24} />
         <InstagramIcon height={24} />

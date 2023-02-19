@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { MagnifyingGlass } from "./Icons";
 
-interface IProps {
-  toggleInput: (toggle: boolean) => void;
-  isInputOpen: boolean;
-}
-
-const FindProducts: React.FC<IProps> = ({ toggleInput, isInputOpen }) => {
+const FindProducts = () => {
   const [searchValue, setSearchValue] = useState("");
+  //const [isInputOpen, toggleInput] = useState(false);
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -17,14 +13,13 @@ const FindProducts: React.FC<IProps> = ({ toggleInput, isInputOpen }) => {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("handleSearchSubmit");
   };
 
   return (
     <form
       onSubmit={handleSearchSubmit}
-      className={`${
-        isInputOpen ? "mx-auto" : "ml-auto"
-      } flex max-w-xl flex-row-reverse transition-all`}
+      className={`ml-auto flex max-w-xl flex-row-reverse transition-all`}
     >
       <div className="relative flex items-center">
         <input
@@ -32,20 +27,13 @@ const FindProducts: React.FC<IProps> = ({ toggleInput, isInputOpen }) => {
           id="search"
           value={searchValue}
           onChange={handleSearchInputChange}
-          placeholder={isInputOpen ? "Buscar productos" : ""}
-          className={`${
-            isInputOpen ? "w-full" : "w-24"
-          } rounded-full border-2 border-gray-300 bg-white py-2 px-4 italic leading-tight text-gray-700 transition-all focus:border-purple-500 focus:bg-white focus:outline-none`}
+          placeholder="Buscar productos"
+          className={`w-full rounded-full border-2 border-gray-300 bg-white py-2 px-4 italic leading-tight text-gray-700 transition-all focus:border-purple-500 focus:bg-white focus:outline-none`}
         />
 
         <button
           type="submit"
-          className={` ${
-            isInputOpen ? "right-6 rotate-180" : "right-9"
-          } absolute top-0 mt-2 mr-4 transition-all`}
-          onClick={() => {
-            toggleInput(!isInputOpen);
-          }}
+          className={`absolute right-9 top-0 mt-2 mr-4 transition-all`}
         >
           <svg
             fill="none"
@@ -61,13 +49,7 @@ const FindProducts: React.FC<IProps> = ({ toggleInput, isInputOpen }) => {
             />
           </svg>
         </button>
-        <button
-          type="submit"
-          className="absolute right-0 top-0 mt-2 mr-4"
-          onClick={() => {
-            toggleInput(!isInputOpen);
-          }}
-        >
+        <button type="submit" className="absolute right-0 top-0 mt-2 mr-4">
           <MagnifyingGlass stroke="gray" width={24} />
         </button>
       </div>
