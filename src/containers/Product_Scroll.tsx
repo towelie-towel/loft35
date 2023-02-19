@@ -1,4 +1,5 @@
-import ProductItem from "../components/Product_Item";
+import CategoryGroup from "../components/Category_Group";
+import ProductCategories from "../components/Product_Categories";
 import type { IProduct } from "../utils/data";
 
 interface IProps {
@@ -16,34 +17,17 @@ const categories = [
 const ProductsSroll: React.FC<IProps> = ({ products }) => {
   return (
     <div className="w-full">
-      <div className="flex w-full flex-row items-center justify-between">
-        {categories.map((category) => {
-          return (
-            <div
-              className="rounded-lg border-[1px] border-solid border-red-500 p-1 shadow-2xl"
-              key={category.join()}
-            >
-              {category.join(" & ")}
-            </div>
-          );
-        })}
-      </div>
+      <ProductCategories categories={categories} />
       {categories.map((categoryGroup) => {
         const categoryProducts = products.filter((product) =>
           categoryGroup.includes(product.category)
         );
         return (
-          <div key={categoryGroup.join()} className="w-full">
-            <h1 className="mb-5 text-center">{categoryGroup.join(" & ")}</h1>
-            <div className="m-auto flex w-full max-w-screen-md flex-wrap justify-around">
-              {categoryProducts.map((categoryProduct) => (
-                <ProductItem
-                  product={categoryProduct}
-                  key={categoryProduct.slug}
-                />
-              ))}
-            </div>
-          </div>
+          <CategoryGroup
+            key={categoryGroup.join()}
+            categoryProducts={categoryProducts}
+            categoryGroup={categoryGroup}
+          />
         );
       })}
     </div>
