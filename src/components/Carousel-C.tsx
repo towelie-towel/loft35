@@ -10,7 +10,7 @@ interface IProps {
   images: IStoreImage[];
 }
 
-const CardSlider: React.FC<IProps> = ({ images }) => {
+const CardSlider1: React.FC<IProps> = ({ images }) => {
   gsap.registerPlugin(ScrollTrigger);
 
   const [cardRef, cardInView] = useInView({
@@ -69,4 +69,4 @@ const CardSlider: React.FC<IProps> = ({ images }) => {
     </div>
   );
 };
-export default CardSlider;
+export default CardSlider1;

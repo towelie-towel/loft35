@@ -37,42 +37,17 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
       const sliderWidth = sliderRef.current.clientWidth;
       const cardWidth = cardsRef.current[0].clientWidth;
       const numCards = cardsRef.current.length;
-      console.log("sliderWidth", sliderWidth);
-      console.log("cardWidth", cardWidth);
-      console.log("numCards", numCards);
 
       const totalWidth = cardWidth * numCards;
       const maxScrollPos = totalWidth - sliderWidth;
       setShowScrollButtons(maxScrollPos > 0);
       setMaxScrollPos(maxScrollPos);
 
-      //const handleWheel = (event: WheelEvent) => {
-      //  event.preventDefault();
-      //  const wheelDelta = event.deltaY;
-      //  const newScrollPos = scrollPos + wheelDelta;
-      //  setScrollPos(Math.max(0, Math.min(maxScrollPos, newScrollPos)));
-      //};
-
       gsap.to(sliderRef.current, {
         x: -scrollPos,
-        duration: 0.3,
+        duration: 0.6,
         ease: "power3.out",
       });
-
-      //cardsRef.current.forEach((cardRef, index) => {
-      //  const x = index * cardWidth;
-      //  gsap.to(cardRef, {
-      //    x,
-      //    duration: 0.3,
-      //    ease: "power3.out",
-      //  });
-      //});
-
-      //sliderRef.current.addEventListener("wheel", handleWheel);
-
-      //return () => {
-      //  sliderRef.current?.removeEventListener("wheel", handleWheel);
-      //};
     }
   }, [scrollPos]);
 

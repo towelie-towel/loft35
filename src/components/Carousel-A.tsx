@@ -4,26 +4,26 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation, motion } from "framer-motion";
 
 interface CardProps {
-  imageUrl: string;
-  title: string;
+  src: string;
+  name: string;
 }
 
-const Card: React.FC<CardProps> = ({ imageUrl, title }) => {
+const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
     <div className="m-4 w-full overflow-hidden rounded-lg bg-white shadow-lg sm:w-64">
       <div className="relative h-48">
         <Image
-          src={imageUrl}
-          alt={title}
-          fill
-          priority
+          src={src}
+          alt={name}
+          width={500}
+          height={500}
           sizes="(max-width: 425px) 50vw,
               (max-width: 768px) 75vw,
               (max-width: 1024px) 100vw"
         />
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-bold">{title}</h3>
+        <h3 className="text-xl font-bold">{name}</h3>
       </div>
     </div>
   );
@@ -64,7 +64,7 @@ const Carousel: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
         initial="hidden"
       >
         {cards.map((card) => (
-          <motion.div key={card.title} variants={variants}>
+          <motion.div key={card.name} variants={variants}>
             <Card {...card} />
           </motion.div>
         ))}
@@ -74,3 +74,7 @@ const Carousel: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
 };
 
 export default Carousel;
+
+/* Chat GPT
+Este componente define una tarjeta de imagen (Card) y un componente de carrusel (Carousel) que renderiza un conjunto de tarjetas de imagen en un scroll horizontal y aplica una animación suave al hacer scroll. El componente de carrusel utiliza la librería Framer Motion para definir las animaciones de transición.
+*/
