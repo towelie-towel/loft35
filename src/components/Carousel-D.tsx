@@ -37,34 +37,21 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
       const sliderWidth = sliderRef.current.clientWidth;
       const cardWidth = cardsRef.current[0].clientWidth;
       const numCards = cardsRef.current.length;
+      console.log("sliderWidth", sliderWidth);
+      console.log("cardWidth", cardWidth);
+      console.log("numCards", numCards);
 
       const totalWidth = cardWidth * numCards;
       const maxScrollPos = totalWidth - sliderWidth;
       setShowScrollButtons(maxScrollPos > 0);
       setMaxScrollPos(maxScrollPos);
 
-      const handleWheel = (event: WheelEvent) => {
-        event.preventDefault();
-        const wheelDelta = event.deltaY;
-        const newScrollPos = scrollPos + wheelDelta;
-        setScrollPos(Math.max(0, Math.min(maxScrollPos, newScrollPos)));
-      };
-
-      sliderRef.current.addEventListener("wheel", handleWheel);
-
-      return () => {
-        sliderRef.current?.removeEventListener("wheel", handleWheel);
-      };
-    }
-  }, [scrollPos]);
-
-  useEffect(() => {
-    if (
-      sliderRef.current &&
-      cardsRef.current.length > 0 &&
-      cardsRef.current[0]
-    ) {
-      const cardWidth = cardsRef.current[0].clientWidth;
+      //const handleWheel = (event: WheelEvent) => {
+      //  event.preventDefault();
+      //  const wheelDelta = event.deltaY;
+      //  const newScrollPos = scrollPos + wheelDelta;
+      //  setScrollPos(Math.max(0, Math.min(maxScrollPos, newScrollPos)));
+      //};
 
       gsap.to(sliderRef.current, {
         x: -scrollPos,
@@ -72,14 +59,20 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         ease: "power3.out",
       });
 
-      cardsRef.current.forEach((cardRef, index) => {
-        const x = index * cardWidth;
-        gsap.to(cardRef, {
-          x,
-          duration: 0.3,
-          ease: "power3.out",
-        });
-      });
+      //cardsRef.current.forEach((cardRef, index) => {
+      //  const x = index * cardWidth;
+      //  gsap.to(cardRef, {
+      //    x,
+      //    duration: 0.3,
+      //    ease: "power3.out",
+      //  });
+      //});
+
+      //sliderRef.current.addEventListener("wheel", handleWheel);
+
+      //return () => {
+      //  sliderRef.current?.removeEventListener("wheel", handleWheel);
+      //};
     }
   }, [scrollPos]);
 
@@ -157,13 +150,13 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
       </div>
       <div
         ref={sliderRef}
-        className="relative flex w-full items-center justify-start overflow-hidden"
+        className="relative flex w-full items-center justify-start overflow-visible"
       >
         {images.map((image, index) => (
           <div
             key={index}
             ref={(el) => (cardsRef.current[index] = el!)}
-            className="flex-shrink-0"
+            className="h-screen flex-shrink-0"
           >
             <Card src={image.src} name={image.name} />
           </div>
@@ -174,3 +167,9 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
 };
 
 export default CardSlider;
+
+/* Chat GPT
+La variable maxScrollPos se declara fuera del alcance de los efectos y los manejadores de eventos del componente. Se inicializa a 0. Se utilizará para mantener un seguimiento del número máximo de píxeles que se pueden desplazar.
+
+En el primer efecto de useEffect(), se comprueba que los elementos sliderRef y cardsRef existan y que haya al menos un elemento en cardsRef. Se calcula el ancho del slider y el ancho de una sola tarjeta. A partir de estos datos, se calcula el ancho total de todas las tarjetas y se establece el número máximo de píxeles que se pueden desplazar en la variable maxScrollPos. También se establece la variable showScrollButtons en true si el número máximo de píxeles que se pueden desplazar es mayor que 0.
+*/
