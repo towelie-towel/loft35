@@ -19,7 +19,7 @@ const FindProducts = () => {
   return (
     <form
       onSubmit={handleSearchSubmit}
-      className={`ml-auto flex max-w-xl flex-row-reverse transition-all`}
+      className={`flex max-w-md flex-row-reverse transition-all`}
     >
       <div className="relative flex items-center">
         <input
@@ -34,21 +34,7 @@ const FindProducts = () => {
         <button
           type="submit"
           className={`absolute right-9 top-0 mt-2 mr-4 transition-all`}
-        >
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="gray"
-            className="h-6 w-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-        </button>
+        ></button>
         <button type="submit" className="absolute right-0 top-0 mt-2 mr-4">
           <MagnifyingGlass stroke="gray" width={24} />
         </button>

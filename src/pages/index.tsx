@@ -4,6 +4,8 @@ import Header from "../containers/Header";
 import Footer from "../containers/Footer";
 import ProductsSroll from "../containers/Product_Scroll";
 import data from "../utils/data";
+import HorizontalImageScroll from "../components/Carousel-B";
+import CardSlider from "../components/Carousel-D";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +18,15 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <main className="container m-auto">
+        <h1>HorizontalImageScroll</h1>
+        <HorizontalImageScroll
+          images={data.products.map((product) => product.image.src)}
+        />
+
+        <h1>CardSlider</h1>
+        <CardSlider images={data.products.map((product) => product.image)} />
+
+        <h1>ProductsSroll</h1>
         <ProductsSroll products={data.products} />
       </main>
       <Footer />
