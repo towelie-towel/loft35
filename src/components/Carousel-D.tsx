@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { NextSlider, PrevSlider } from "./Icons";
 
 interface CardProps {
   src: string;
@@ -79,46 +80,18 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         {showScrollButtons && (
           <>
             <button
-              className="absolute left-0 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-gray-700
-              bg-opacity-50 p-2 text-white shadow-md transition-colors duration-300 hover:text-gray-100 focus:outline-none"
+              className="absolute left-0 top-1/2 z-10"
               onClick={handlePrevClick}
               disabled={scrollPos === 0}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <PrevSlider stroke="#a1a5b7" />
             </button>
             <button
-              className="absolute right-0 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-gray-700
-              bg-opacity-50 p-2 text-white shadow-md transition-colors duration-300 hover:text-gray-100 focus:outline-none"
+              className="absolute right-0 top-1/2 z-10"
               onClick={handleNextClick}
               disabled={scrollPos === maxScrollPos}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <NextSlider stroke="#a1a5b7" />
             </button>
           </>
         )}

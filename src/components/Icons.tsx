@@ -144,6 +144,44 @@ export const MagnifyingGlass: React.FC<IProps> = ({
   );
 };
 
+export const PrevSlider: React.FC<IProps> = ({ width, height, stroke }) => {
+  return (
+    <svg
+      width={width || height || 32}
+      height={height || width || 32}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke={stroke || "currentColor"}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2.5}
+        d="M15 19l-7-7 7-7"
+      />
+    </svg>
+  );
+};
+
+export const NextSlider: React.FC<IProps> = ({ width, height, stroke }) => {
+  return (
+    <svg
+      width={width || height || 32}
+      height={height || width || 32}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke={stroke || "currentColor"}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2.5}
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  );
+};
+
 export const ShareIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
