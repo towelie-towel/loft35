@@ -11,9 +11,9 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      <div className="w-5/6 overflow-hidden rounded-md shadow-lg sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-1/3">
+      <div className="w-5/6 overflow-hidden rounded-md shadow-lg">
         <Image src={src} alt={name} width={500} height={500} />
-        <div className="bg-white py-3 px-4 text-center">
+        <div className="bg-white py-3 text-center">
           <h3 className="text-xl font-semibold">{name}</h3>
         </div>
       </div>
@@ -104,7 +104,7 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
           <div
             key={index}
             ref={(el) => (cardsRef.current[index] = el!)}
-            className="h-screen flex-shrink-0"
+            className="flex-shrink-0"
           >
             <Card src={image.src} name={image.name} />
           </div>

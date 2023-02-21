@@ -241,6 +241,24 @@ const data = {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
     },
   ],
+  slider: [
+    {
+      name: "whataform_cartera",
+      src: "/images/slider/whataform_cartera.jpg",
+    },
+    {
+      name: "whataform_pink",
+      src: "/images/slider/whataform_pink.jpg",
+    },
+    {
+      name: "whataform_tojo_clau",
+      src: "/images/slider/whataform_tojo_clau.jpg",
+    },
+    {
+      name: "whataform_very_perry",
+      src: "/images/slider/whataform_very_perry.jpg",
+    },
+  ],
 };
 
 export default data;
