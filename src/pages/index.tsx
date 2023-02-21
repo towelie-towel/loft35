@@ -4,7 +4,6 @@ import Header from "../containers/Header";
 import Footer from "../containers/Footer";
 import ProductsSroll from "../containers/Product_Scroll";
 import data from "../utils/data";
-import CardSlider from "../components/Carousel-D";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +16,6 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <main className="container m-auto">
-        <CardSlider images={data.products.map((product) => product.image)} />
         <ProductsSroll products={data.products} />
       </main>
       <Footer />

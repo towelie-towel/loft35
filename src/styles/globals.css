@@ -8,13 +8,32 @@
   --light-gray-1: #dad1bce0;
   --dark-bg-color: #292d32;
   --light-bg-color: #dad1bc;
-  background-color: #dad1bc;
+
+  -webkit-font-smoothing: antialiased;
+
+  --bs-font-sans-serif: Poppins, Helvetica, sans-serif;
+  --bs-font-monospace: Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-family: var(--bs-font-sans-serif);
+
+  background-color: #ebe2cc;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 [data-color-scheme="dark"] {
   color-scheme: dark;
   img {
     opacity: 40%;
+  }
+  input {
+    background-color: #292d32;
+    border-color: #444444;
+  }
+  .magnifyingGlass {
+    background-color: #292d32;
+    border-color: #444444;
   }
   background-color: var(--dark-bg-color);
 }
@@ -37,7 +56,6 @@ img {
 html,
 body {
   scroll-behavior: smooth;
-  max-width: 100vw;
 }
 
 body {
@@ -53,10 +71,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-input,
-select,
-textarea {
-  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
 }

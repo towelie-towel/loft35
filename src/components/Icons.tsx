@@ -132,7 +132,7 @@ export const MagnifyingGlass: React.FC<IProps> = ({
       width={width || height || 40}
       height={height || width || 40}
       viewBox="0 0 24 24"
-      strokeWidth="3"
+      strokeWidth="1.5"
       stroke={stroke || "currentColor"}
     >
       <path
@@ -317,7 +317,7 @@ export const FacebookIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
       stroke={stroke || "currentColor"}
-      fill="currentColor"
+      fill={stroke || "currentColor"}
       width={width || height || 40}
       height={height || width || 40}
       viewBox="0 0 24 24"

@@ -19,7 +19,7 @@ const FindProducts = () => {
   return (
     <form
       onSubmit={handleSearchSubmit}
-      className={`flex max-w-md flex-row-reverse transition-all`}
+      className={`flex h-10 max-w-md flex-row-reverse transition-all`}
     >
       <div className="relative flex items-center">
         <input
@@ -27,16 +27,14 @@ const FindProducts = () => {
           id="search"
           value={searchValue}
           onChange={handleSearchInputChange}
-          placeholder="Buscar productos"
-          className={`w-full rounded-full border-2 border-gray-300 bg-white py-2 px-4 italic leading-tight text-gray-700 transition-all focus:border-purple-500 focus:bg-white focus:outline-none`}
+          placeholder="Buscar"
+          className="h-full max-w-[200px] rounded-l-lg border-[1px] border-r-0 border-[#d3d5dd] bg-[#fff] px-4 font-medium text-[#555555] transition-all"
         />
-
         <button
           type="submit"
-          className={`absolute right-9 top-0 mt-2 mr-4 transition-all`}
-        ></button>
-        <button type="submit" className="absolute right-0 top-0 mt-2 mr-4">
-          <MagnifyingGlass stroke="gray" width={24} />
+          className="magnifyingGlass flex h-full min-w-[40px] items-center justify-center rounded-r-lg border-[1px] border-[#d3d5dd] bg-[#f5f8fa] px-2 transition-all"
+        >
+          <MagnifyingGlass stroke="#a1a5b7" width={18} />
         </button>
       </div>
     </form>
