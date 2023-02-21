@@ -10,10 +10,10 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <div className="w-5/6 overflow-hidden rounded-md shadow-lg">
-        <Image src={src} alt={name} width={500} height={500} />
-        <div className="bg-white py-3 text-center">
+    <div className="flex w-screen flex-col items-center justify-center">
+      <div className="relative h-[120px] w-[80vw] rounded-md shadow-lg">
+        <Image src={src} alt={name} fill />
+        <div className="py-3 text-center">
           <h3 className="text-xl font-semibold">{name}</h3>
         </div>
       </div>
