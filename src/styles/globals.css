@@ -27,10 +27,7 @@
   img {
     opacity: 40%;
   }
-  input {
-    background-color: #292d32;
-    border-color: #444444;
-  }
+  input,
   .magnifyingGlass {
     background-color: #292d32;
     border-color: #444444;
