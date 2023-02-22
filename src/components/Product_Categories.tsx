@@ -8,7 +8,7 @@ const ProductCategories: React.FC<IProps> = ({ categories }) => {
       {categories.map((category) => {
         return (
           <div
-            className="rounded-lg border-[1px] border-solid border-red-500 p-1 shadow-2xl"
+            className="rounded-lg border-[1px] border-solid p-1 shadow-2xl"
             key={category.join()}
           >
             {category.join(" & ")}

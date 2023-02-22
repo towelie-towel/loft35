@@ -10,12 +10,9 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
-    <div className="flex w-screen flex-col items-center justify-center">
-      <div className="relative h-[120px] w-[80vw] rounded-md shadow-lg">
+    <div className="flex w-[90vw] flex-col items-center justify-center">
+      <div className="relative w-[80%] rounded-md pb-[25%] shadow-lg">
         <Image src={src} alt={name} fill />
-        <div className="py-3 text-center">
-          <h3 className="text-xl font-semibold">{name}</h3>
-        </div>
       </div>
     </div>
   );
@@ -75,7 +72,7 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       <div className="flex items-center justify-center">
         {showScrollButtons && (
           <>
@@ -103,7 +100,7 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         {images.map((image, index) => (
           <div
             key={index}
-            ref={(el) => (cardsRef.current[index] = el!)}
+            ref={(item: HTMLDivElement) => (cardsRef.current[index] = item)}
             className="flex-shrink-0"
           >
             <Card src={image.src} name={image.name} />
