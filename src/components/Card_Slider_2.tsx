@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import useInterval from "../hooks/useInterval";
 import { PrevSlider, NextSlider } from "./Icons";
-import { useInView } from "react-intersection-observer";
 
 interface SliderProps {
   images: { src: string; alt: string }[];
@@ -14,7 +13,6 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
   const [showNext, setShowNext] = useState(true);
 
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [ref, inView] = useInView({ threshold: 0 });
 
   const handlePrev = () => {
     setCurrentIndex(currentIndex - 1);
@@ -38,24 +36,20 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
       ref={sliderRef}
       className="relative flex w-full items-center justify-start overflow-visible"
     >
-      <div ref={ref} className="flex-shrink-0">
-        {inView && (
-          <div className="flex w-[90vw] flex-col items-center justify-center">
-            <div
-              className={
-                "relative w-[80%] rounded-md pb-[25%] shadow-lg transition-opacity duration-500"
-              }
-            >
-              <Image
-                src={
-                  images[currentIndex]?.src || "/images/icon/placeholder.png"
-                }
-                alt={images[currentIndex]?.alt || "placeholder"}
-                fill
-              />
-            </div>
+      <div className="flex-shrink-0">
+        <div className="flex w-[90vw] flex-col items-center justify-center">
+          <div
+            className={
+              "relative w-[80%] rounded-md pb-[25%] shadow-lg transition-opacity duration-500"
+            }
+          >
+            <Image
+              src={images[currentIndex]?.src || "/images/icon/placeholder.png"}
+              alt={images[currentIndex]?.alt || "placeholder"}
+              fill
+            />
           </div>
-        )}
+        </div>
       </div>
       <div>
         {showPrev && (
