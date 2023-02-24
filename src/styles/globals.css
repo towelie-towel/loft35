@@ -13,7 +13,7 @@
   --primary-bg-color: #ebe2cc;
   --secondary-bg-color: white;
 
-  --light-font-primary-color: black;
+  --light-font-primary-color: #222222;
   --light-font-secondary-color: #555555;
   --dark-font-primary-color: #ffffff;
   --dark-font-secondary-color: #777777;
@@ -28,7 +28,7 @@
     monospace;
   font-family: var(--bs-font-sans-serif);
   font-weight: 400;
-  color: var(--primary-bg-color);
+  color: var(--light-font-primary-color);
   background-color: var(--primary-bg-color);
 
   max-width: 1024px;

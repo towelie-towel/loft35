@@ -12,6 +12,8 @@ const categories = [
   ["Pants"],
   ["Sweaters", "Coats"],
   ["Bags"],
+  ["Lencerie"],
+  ["Others"],
 ];
 
 const ProductsSroll: React.FC<IProps> = ({ products }) => {

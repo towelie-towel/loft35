@@ -6,7 +6,7 @@ const NavBar: React.FC = () => {
     <nav className="my-5 mx-auto flex h-auto w-11/12 items-center justify-center">
       <div className="flex w-[80%] flex-row items-center justify-center max-md:justify-between">
         <FindProducts />
-        <div className="flex w-1/3 justify-between">
+        <div className="flex w-1/3 justify-around max-md:justify-between">
           <InstagramIcon stroke="#555555" height={15} />
           <FacebookIcon stroke="#555555" height={15} />
           <ShoppingCart
