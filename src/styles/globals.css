@@ -41,9 +41,9 @@
 }
 
 * {
+  @apply transition-all;
   box-sizing: border-box;
   padding: 0;
-  transition-property: all;
   margin: 0;
   overflow: auto;
 }
