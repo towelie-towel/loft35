@@ -13,6 +13,14 @@
   --primary-bg-color: #ebe2cc;
   --secondary-bg-color: white;
 
+  --light-font-primary-color: black;
+  --light-font-secondary-color: #555555;
+  --dark-font-primary-color: #ffffff;
+  --dark-font-secondary-color: #777777;
+
+  --font-primary-color: var(--light-font-primary-color);
+  --font-secondary-color: var(--light-font-secondary-color);
+
   -webkit-font-smoothing: antialiased;
 
   --bs-font-sans-serif: Poppins, Helvetica, sans-serif;
@@ -20,7 +28,7 @@
     monospace;
   font-family: var(--bs-font-sans-serif);
   font-weight: 400;
-  color: #555555;
+  color: var(--primary-bg-color);
   background-color: var(--primary-bg-color);
 
   max-width: 1024px;
@@ -34,7 +42,10 @@
 [data-color-scheme="dark"] {
   --primary-bg-color: var(--dark-bg-color);
   --secondary-bg-color: #444444;
+  --font-primary-color: var(--dark-font-primary-color);
+  --font-secondary-color: var(--dark-font-secondary-color);
   color-scheme: dark;
+  color: #ffffff;
   img {
     opacity: 60%;
   }

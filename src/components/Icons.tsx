@@ -220,9 +220,15 @@ export const ShareIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   );
 };
 
-export const ShoppingCart: React.FC<IProps> = ({ width, height, stroke }) => {
+export const ShoppingCart: React.FC<IProps & { onClick: () => void }> = ({
+  width,
+  height,
+  stroke,
+  onClick,
+}) => {
   return (
     <svg
+      onClick={onClick}
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"

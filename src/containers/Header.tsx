@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 
 const Header = () => {
   return (
-    <header>
+    <header className="container mx-auto">
       <NavBar />
       <HeaderView />
     </header>
