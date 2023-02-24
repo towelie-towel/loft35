@@ -77,14 +77,14 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         {showScrollButtons && (
           <>
             <button
-              className="absolute left-0 top-1/2 z-10"
+              className="absolute left-0 top-1/3 z-10"
               onClick={handlePrevClick}
               disabled={scrollPos === 0}
             >
               <PrevSlider stroke="#a1a5b7" />
             </button>
             <button
-              className="absolute right-0 top-1/2 z-10"
+              className="absolute right-0 top-1/3 z-10"
               onClick={handleNextClick}
               disabled={scrollPos === maxScrollPos}
             >
