@@ -11,7 +11,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
-    <div className="flex w-[90vw] flex-col items-center justify-center">
+    <div className="flex w-[50vw] flex-col items-center justify-center">
       <div className="relative w-[80%] rounded-md pb-[25%] shadow-lg">
         <Image src={src} alt={name} fill />
       </div>
@@ -21,14 +21,15 @@ const Card: React.FC<CardProps> = ({ src, name }) => {
 
 const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-
   const [scrollPos, setScrollPos] = useState(0);
   const [maxScrollPos, setMaxScrollPos] = useState(500);
   const [cardWidth, setCardWidth] = useState(500);
   const [showScrollButtons, setShowScrollButtons] = useState(false);
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
 
   useEffect(() => {
     if (sliderRef.current) {
+      debugger;
       const cardWidth = sliderRef.current.clientWidth;
       const numCards = images.length;
 
@@ -41,13 +42,14 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
 
       gsap.to(sliderRef.current, {
         x: -scrollPos,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power3.out",
       });
     }
   }, [images.length, scrollPos]);
 
   const handlePrevClick = () => {
+    setAutoScrollEnabled(false);
     if (scrollPos === 0) {
       setScrollPos(maxScrollPos);
     } else {
@@ -55,11 +57,8 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
     }
   };
 
-  useInterval(() => {
-    handleNextClick();
-  }, 4000);
-
   const handleNextClick = () => {
+    setAutoScrollEnabled(false);
     if (!sliderRef.current) return;
     if (scrollPos === maxScrollPos) {
       setScrollPos(0);
@@ -67,6 +66,10 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
       setScrollPos(scrollPos + cardWidth);
     }
   };
+
+  useInterval(() => {
+    if (autoScrollEnabled) handleNextClick();
+  }, 4000);
 
   return (
     <div className="relative w-full overflow-hidden">
