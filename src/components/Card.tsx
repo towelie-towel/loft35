@@ -1,18 +1,25 @@
 import Image from "next/image";
 import { useEffect } from "react";
 
-interface CardProps {
+type CardProps = {
   src: string;
   name: string;
-}
+};
 
-export const Card: React.FC<CardProps> = ({ src, name }) => {
-  console.log("Card");
+export const Card: React.FC<CardProps & Record<string, unknown>> = ({
+  src,
+  name,
+  ...restProps
+}) => {
   useEffect(() => {
-    console.log("Card, useEffect[]");
+    return;
   });
+
   return (
-    <div className={`flex w-[700px] flex-col items-center justify-center`}>
+    <div
+      {...restProps}
+      className="flex w-[var(--slider-width)] flex-col items-center justify-center"
+    >
       <div className="relative w-[80%] rounded-md pb-[25%] shadow-lg">
         <Image src={src} alt={name} fill />
       </div>
