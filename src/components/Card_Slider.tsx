@@ -41,11 +41,11 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
 
       gsap.to(sliderRef.current, {
         x: -scrollPos,
-        duration: 0.6,
+        duration: 0.4,
         ease: "power3.out",
       });
     }
-  }, [scrollPos]);
+  }, [images.length, scrollPos]);
 
   const handlePrevClick = () => {
     if (scrollPos === 0) {
