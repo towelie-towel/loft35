@@ -1,52 +1,87 @@
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import useInterval from "../hooks/useInterval";
 import { NextSlider, PrevSlider } from "./Icons";
+import { Card } from "./Card";
 
-interface CardProps {
+interface CardSlider {
   src: string;
   name: string;
 }
 
-const Card: React.FC<CardProps> = ({ src, name }) => {
-  return (
-    <div className="flex w-[50vw] flex-col items-center justify-center">
-      <div className="relative w-[80%] rounded-md pb-[25%] shadow-lg">
-        <Image src={src} alt={name} fill />
-      </div>
-    </div>
-  );
-};
-
-const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
+const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
   const [scrollPos, setScrollPos] = useState(0);
-  const [maxScrollPos, setMaxScrollPos] = useState(500);
-  const [cardWidth, setCardWidth] = useState(500);
+  const [numCards, setNumCards] = useState(cardsRef.current.length);
+  const [sliderWidth, setSliderWidth] = useState(
+    sliderRef.current?.clientWidth
+  );
+  const [cardWidth, setCardWidth] = useState(
+    cardsRef.current[0]?.clientWidth || 400
+  );
+  const [totalWidth, setTotalWidth] = useState(cardWidth * numCards);
+  const [maxScrollPos, setMaxScrollPos] = useState(totalWidth);
   const [showScrollButtons, setShowScrollButtons] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
 
   useEffect(() => {
-    if (sliderRef.current) {
-      debugger;
-      const cardWidth = sliderRef.current.clientWidth;
-      const numCards = images.length;
+    setNumCards(cardsRef.current.length);
+    setSliderWidth(sliderRef.current?.clientWidth);
+    setCardWidth(cardsRef.current[0]?.clientWidth || 400);
+    setTotalWidth(
+      (cardsRef.current[0]?.clientWidth || 400) * cardsRef.current.length
+    );
+    setMaxScrollPos(
+      (cardsRef.current[0]?.clientWidth || 400) * cardsRef.current.length
+    );
+    setShowScrollButtons(true);
 
-      const totalWidth = cardWidth * numCards;
-      const maxScrollPos = totalWidth - cardWidth;
+    console.log("CardSlider, useEffect[] (0)", {
+      globalStates: {
+        numCards,
+        sliderWidth,
+        cardWidth,
+        totalWidth,
+        maxScrollPos,
+        showScrollButtons,
+        autoScrollEnabled,
+      },
+    });
+    console.log("CardSlider, useEffect[] (1)", {
+      globalRef: {
+        cardsRef,
+        sliderRef,
+      },
+    });
+  });
 
-      setCardWidth(cardWidth);
-      setShowScrollButtons(images.length > 1);
-      setMaxScrollPos(maxScrollPos);
+  useEffect(() => {
+    console.log("CardSlider, useEffect [scrollPos] (0)", {
+      globalStates: {
+        numCards,
+        sliderWidth,
+        cardWidth,
+        totalWidth,
+        maxScrollPos,
+        showScrollButtons,
+        autoScrollEnabled,
+      },
+    });
+    console.log("CardSlider, useEffect [scrollPos] (1)", {
+      globalRef: {
+        cardsRef,
+        sliderRef,
+      },
+    });
 
-      gsap.to(sliderRef.current, {
-        x: -scrollPos,
-        duration: 0.3,
-        ease: "power3.out",
-      });
-    }
-  }, [images.length, scrollPos]);
+    gsap.to(sliderRef.current, {
+      x: -scrollPos,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+  }, [scrollPos]);
 
   const handlePrevClick = () => {
     setAutoScrollEnabled(false);
@@ -96,7 +131,11 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         className="relative flex w-full items-center justify-start overflow-visible"
       >
         {images.map((image, index) => (
-          <div key={index} className="flex-shrink-0">
+          <div
+            key={index}
+            ref={(item: HTMLDivElement) => (cardsRef.current[index] = item)}
+            className="flex-shrink-0"
+          >
             <Card src={image.src} name={image.name} />
           </div>
         ))}
