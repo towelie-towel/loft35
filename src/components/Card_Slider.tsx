@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import useInterval from "../hooks/useInterval";
 import { NextSlider, PrevSlider } from "./Icons";
 
 interface CardProps {
@@ -20,25 +21,22 @@ const Card: React.FC<CardProps> = ({ src, name }) => {
 
 const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   const [scrollPos, setScrollPos] = useState(0);
   const [maxScrollPos, setMaxScrollPos] = useState(500);
+  const [cardWidth, setCardWidth] = useState(500);
   const [showScrollButtons, setShowScrollButtons] = useState(false);
 
   useEffect(() => {
-    if (
-      sliderRef.current &&
-      cardsRef.current.length > 0 &&
-      cardsRef.current[0]
-    ) {
-      const sliderWidth = sliderRef.current.clientWidth;
-      const cardWidth = cardsRef.current[0].clientWidth;
-      const numCards = cardsRef.current.length;
+    if (sliderRef.current) {
+      const cardWidth = sliderRef.current.clientWidth;
+      const numCards = images.length;
 
       const totalWidth = cardWidth * numCards;
-      const maxScrollPos = totalWidth - sliderWidth;
-      setShowScrollButtons(maxScrollPos > 0);
+      const maxScrollPos = totalWidth - cardWidth;
+
+      setCardWidth(cardWidth);
+      setShowScrollButtons(images.length > 1);
       setMaxScrollPos(maxScrollPos);
 
       gsap.to(sliderRef.current, {
@@ -50,25 +48,24 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
   }, [scrollPos]);
 
   const handlePrevClick = () => {
-    if (!cardsRef.current[0]) return;
-    const cardWidth = cardsRef.current[0].clientWidth;
-    const newScrollPos = scrollPos - cardWidth;
-    setScrollPos(Math.max(0, newScrollPos));
+    if (scrollPos === 0) {
+      setScrollPos(maxScrollPos);
+    } else {
+      setScrollPos(scrollPos - cardWidth);
+    }
   };
 
+  useInterval(() => {
+    handleNextClick();
+  }, 4000);
+
   const handleNextClick = () => {
-    if (!cardsRef.current[0] || !sliderRef.current || !cardsRef.current) return;
-
-    const sliderWidth = sliderRef.current.clientWidth;
-    const cardWidth = cardsRef.current[0].clientWidth;
-    const numCards = cardsRef.current.length;
-
-    const totalWidth = cardWidth * numCards;
-    const maxScrollPos = totalWidth - sliderWidth;
-    setMaxScrollPos(maxScrollPos);
-
-    const newScrollPos = scrollPos + cardWidth;
-    setScrollPos(Math.min(maxScrollPos, newScrollPos));
+    if (!sliderRef.current) return;
+    if (scrollPos === maxScrollPos) {
+      setScrollPos(0);
+    } else {
+      setScrollPos(scrollPos + cardWidth);
+    }
   };
 
   return (
@@ -79,14 +76,12 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
             <button
               className="absolute left-0 top-1/3 z-10"
               onClick={handlePrevClick}
-              disabled={scrollPos === 0}
             >
               <PrevSlider stroke="#a1a5b7" />
             </button>
             <button
               className="absolute right-0 top-1/3 z-10"
               onClick={handleNextClick}
-              disabled={scrollPos === maxScrollPos}
             >
               <NextSlider stroke="#a1a5b7" />
             </button>
@@ -98,11 +93,7 @@ const CardSlider: React.FC<{ images: CardProps[] }> = ({ images }) => {
         className="relative flex w-full items-center justify-start overflow-visible"
       >
         {images.map((image, index) => (
-          <div
-            key={index}
-            ref={(item: HTMLDivElement) => (cardsRef.current[index] = item)}
-            className="flex-shrink-0"
-          >
+          <div key={index} className="flex-shrink-0">
             <Card src={image.src} name={image.name} />
           </div>
         ))}
