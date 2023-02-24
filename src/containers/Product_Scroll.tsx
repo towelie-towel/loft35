@@ -16,7 +16,7 @@ const categories = [
 
 const ProductsSroll: React.FC<IProps> = ({ products }) => {
   return (
-    <div className="w-full bg-[var(--secondary-bg-color)]">
+    <div className="m-auto w-11/12 rounded-b-lg bg-[var(--secondary-bg-color)]">
       <ProductCategories categories={categories} />
       {categories.map((categoryGroup) => {
         const categoryProducts = products.filter((product) =>
