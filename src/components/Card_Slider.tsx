@@ -31,8 +31,8 @@ const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
 
     gsap.to(sliderRef.current, {
       x: -(scrollIndex * (cardWidth || 0)),
-      duration: 0.3,
-      ease: "power3.out",
+      duration: 0.2,
+      ease: "none",
     });
   }, [cardWidth, scrollIndex]);
 
