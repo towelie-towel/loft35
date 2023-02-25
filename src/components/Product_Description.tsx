@@ -1,5 +1,5 @@
 import type { IProduct } from "../utils/data";
-import { AddToCartIcon, CartIcon } from "./Icons";
+import { AddToCartIcon } from "./Icons";
 
 interface IProps {
   product: IProduct;

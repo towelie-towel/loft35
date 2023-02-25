@@ -67,13 +67,13 @@ const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
               className="absolute left-0 top-1/3 z-10"
               onClick={handlePrevClick}
             >
-              <PrevSlider stroke="#a1a5b7" />
+              <PrevSlider width={25} stroke="#a1a5b7" />
             </button>
             <button
               className="absolute right-0 top-1/3 z-10"
               onClick={handleNextClick}
             >
-              <NextSlider stroke="#a1a5b7" />
+              <NextSlider width={25} stroke="#a1a5b7" />
             </button>
           </>
         )}
