@@ -5,9 +5,11 @@ interface IProps {
 const ProductCategories: React.FC<IProps> = ({ categories }) => {
   return (
     <div className="flex w-full flex-col pb-8">
-      <button className="mx-auto w-[90%] rounded-md py-4 text-left text-[1rem] font-semibold">
-        Productos disponibles
-      </button>
+      <div className="mx-auto w-[90%] py-4">
+        <button className="text-left text-[1rem] font-semibold">
+          Productos disponibles
+        </button>
+      </div>
       <div className=" mx-auto w-[94%] items-center overflow-x-scroll whitespace-nowrap px-0 pb-3">
         {categories.map((category) => {
           return (

@@ -9,7 +9,7 @@ interface IProps {
 
 const ProductItem: React.FC<IProps> = ({ product }) => {
   return (
-    <div className={`mb-4 w-[50%]`}>
+    <div className={`w-[50%] pb-4`}>
       <div className="product-card m-auto w-[92%] shadow-md">
         <ProductImage image={product.image} />
         <ProductDescription product={product} />
