@@ -19,7 +19,7 @@ const FindProducts = () => {
   return (
     <form
       onSubmit={handleSearchSubmit}
-      className={`mr-2 flex h-10 justify-around transition-all`}
+      className={`mr-10 flex h-10 justify-around transition-all`}
     >
       <div className="relative flex items-center">
         <input
