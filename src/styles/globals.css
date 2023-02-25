@@ -11,15 +11,12 @@
   --light-bg-color: #dad1bc;
 
   --primary-bg-color: #ebe2cc;
-  --secondary-bg-color: white;
+  --secondary-bg-color: #ffffff;
 
-  --light-font-primary-color: #222222;
-  --light-font-secondary-color: #555555;
-  --dark-font-primary-color: #ffffff;
-  --dark-font-secondary-color: #777777;
+  --font-primary-color: #222222;
+  --font-secondary-color: #555555;
 
-  --font-primary-color: var(--light-font-primary-color);
-  --font-secondary-color: var(--light-font-secondary-color);
+  --ico-primary-color: #555555;
 
   -webkit-font-smoothing: antialiased;
 
@@ -28,7 +25,7 @@
     monospace;
   font-family: var(--bs-font-sans-serif);
   font-weight: 400;
-  color: var(--light-font-primary-color);
+  color: var(--font-primary-color);
   background-color: var(--primary-bg-color);
 
   max-width: 1024px;
@@ -42,13 +39,18 @@
 [data-color-scheme="dark"] {
   --primary-bg-color: var(--dark-bg-color);
   --secondary-bg-color: #444444;
-  --font-primary-color: var(--dark-font-primary-color);
-  --font-secondary-color: var(--dark-font-secondary-color);
+
+  --font-primary-color: #ffffff;
+  --font-secondary-color: #333333;
+
+  --ico-primary-color: #ffffff;
+
   color-scheme: dark;
-  color: #ffffff;
+
   img {
-    opacity: 60%;
+    opacity: 85%;
   }
+
   input,
   .magnifyingGlass {
     background-color: #292d32;
