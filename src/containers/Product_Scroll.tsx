@@ -6,11 +6,11 @@ interface IProps {
   products: IProduct[];
 }
 const categories = [
+  ["Pants"],
+  ["T-Shirts"],
+  ["Sweaters", "Coats"],
   ["Shirts"],
   ["Blouses"],
-  ["T-Shirts"],
-  ["Pants"],
-  ["Sweaters", "Coats"],
   ["Bags"],
   ["Lencerie"],
   ["Others"],

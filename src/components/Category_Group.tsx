@@ -13,7 +13,7 @@ const CategoryGroup: React.FC<IProps> = ({
   return (
     <div className="w-full">
       <div className="my-3 mx-auto w-[85%] border-b-[2px] border-solid border-[#dfe3e6]"></div>
-      <h1 className="m-auto mb-3 w-[88%] text-start font-semibold text-[var(--font-secondary-color)] ">
+      <h1 className="m-auto mb-3 w-[88%] text-start font-semibold text-[var(--font-terceary-color)] ">
         {categoryGroup.join(" & ")}
       </h1>
       <div className="m-auto flex w-full flex-wrap">

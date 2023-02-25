@@ -1,4 +1,5 @@
 import type { IProduct } from "../utils/data";
+import { AddToCartIcon, CartIcon } from "./Icons";
 
 interface IProps {
   product: IProduct;
@@ -10,10 +11,10 @@ const ProductDescription: React.FC<IProps> = ({ product }) => {
       <h2 className="text-md">{product.name}</h2>
       <h3 className="text-md my-4">CUP${product.price},00</h3>
       <button
-        className="text-md w-full rounded bg-[var(--light-gray-2)] py-2 px-4 text-[var(--font-secondary-color)] shadow outline-none  hover:bg-[var(--light-gray)] active:bg-[var(--light-gray-1)]"
+        className="text-md flex w-full justify-center rounded bg-[var(--light-gray-2)] py-1 px-4 text-[var(--font-secondary-color)] shadow outline-none  hover:bg-[var(--light-gray)] active:bg-[var(--light-gray-1)]"
         type="button"
       >
-        Añadir al Carrito
+        <AddToCartIcon width={18} />
       </button>
     </div>
   );
