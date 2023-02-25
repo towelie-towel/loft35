@@ -10,7 +10,7 @@ interface IProps {
 const ProductDetail: React.FC<IProps> = ({ product }) => {
   return (
     <div className="fixed top-0 left-0 z-10 h-full w-full bg-gray-900 bg-opacity-75">
-      <div className="relative mx-auto my-32 w-11/12 overflow-auto rounded-lg bg-slate-600 lg:w-1/2">
+      <div className="relative mx-auto my-32 w-[95%] overflow-auto rounded-lg bg-slate-600 lg:w-1/2">
         <Image
           src={product.image.src}
           alt={product.image.name}
