@@ -64,3 +64,68 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+// Definición del modelo de productos
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  image       String
+  secondaryImages String[]
+  price       Float
+  stock       Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  orders      Order[]  @relation("Product-Orders")
+}
+
+// Definición del modelo de categorías
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+// Definición del modelo de clientes
+model Customer {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  address  String
+  orders   Order[]
+}
+
+// Definición del modelo de pedidos
+model Order {
+  id           Int        @id @default(autoincrement())
+  customer     Customer   @relation(fields: [customerId], references: [id])
+  customerId   Int
+  totalPrice   Float
+  orderDate    DateTime   @default(now())
+  shippingInfo Shipping?
+  paymentInfo  Payment?
+  products     Product[]  @relation("Product-Orders")
+}
+
+
+// Definición del modelo de pagos
+model Payment {
+  id           Int    @id @default(autoincrement())
+  paymentType  String
+  amount       Float
+  paymentDate  DateTime  @default(now())
+  order        Order    @relation(fields: [orderId], references: [id])
+  orderId      Int @unique
+}
+
+// Definición del modelo de envíos
+model Shipping {
+  id            Int    @id @default(autoincrement())
+  address       String
+  city          String
+  state         String
+  zipCode       String
+  shippingDate  DateTime  @default(now())
+  order         Order    @relation(fields: [orderId], references: [id])
+  orderId       Int @unique
+}
