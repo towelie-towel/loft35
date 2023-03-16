@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Loft 35</title>
-        <meta name="description" content="Loft-35 Store Sales Sistem" />
+        <meta name="description" content="Loft-35 Store" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
