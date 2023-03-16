@@ -2,17 +2,6 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { S3 } from "aws-sdk";
 import sharp from "sharp";
-import superjson from "superjson";
-
-// Register a custom serializer and deserializer for Buffer instances
-superjson.registerCustom<Buffer, number[]>(
-  {
-    isApplicable: (v): v is Buffer => v instanceof Buffer,
-    serialize: (v) => [...v],
-    deserialize: (v) => Buffer.from(v),
-  },
-  "buffer"
-);
 
 const bucketName = "loft35-aws-bucket";
 
