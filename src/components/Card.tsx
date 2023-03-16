@@ -21,7 +21,7 @@ export const Card: React.FC<CardProps & Record<string, unknown>> = ({
       className="flex w-[var(--slider-width)] flex-col items-center justify-center"
     >
       <div className="relative w-[90%] rounded-md pb-[25%] shadow-lg">
-        <Image src={src} alt={name} fill />
+        <Image priority src={src} alt={name} fill />
       </div>
     </div>
   );
