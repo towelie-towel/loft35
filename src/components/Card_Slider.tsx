@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-//import useInterval from "../hooks/useInterval";
 import { NextSlider, PrevSlider } from "./Icons";
 import { Card } from "./Card";
 
@@ -21,7 +20,6 @@ const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
   const [cardWidth, setCardWidth] = useState(cardsRef.current[0]?.clientWidth);
 
   const [showScrollButtons, setShowScrollButtons] = useState(false);
-  //const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
 
   useEffect(() => {
     setNumCards(cardsRef.current.length);
@@ -51,10 +49,6 @@ const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
       setScrollIndex(scrollIndex + 1);
     }
   };
-
-  //useInterval(() => {
-  //  if (autoScrollEnabled) handleNextClick();
-  //}, 4000);
 
   return (
     <div className="relative w-full overflow-hidden">
