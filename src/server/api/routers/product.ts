@@ -46,8 +46,9 @@ export const productHandlerRouter = createTRPCRouter({
         // Upload the file to the S3 bucket
         const s3Params = {
           Bucket: bucketName,
-          Key: `${Date.now()}-${input.name}`,
+          Key: `${Date.now()}-${input.name}.jpg`,
           Body: optimizedImage,
+          ContentType: "image/jpeg",
         };
         const s3Response = await s3.upload(s3Params).promise();
 
@@ -66,7 +67,7 @@ export const productHandlerRouter = createTRPCRouter({
           category = createdCategory;
         }
 
-        return ctx.prisma.product.create({
+        return await ctx.prisma.product.create({
           data: {
             name: input.name,
             description: input.description,
