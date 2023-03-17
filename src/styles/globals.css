@@ -23,22 +23,16 @@
 
   --ico-primary-color: #555555;
 
-  -webkit-font-smoothing: antialiased;
-
   --bs-font-sans-serif: Poppins, Helvetica, sans-serif;
   --bs-font-monospace: Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
+
   font-family: var(--bs-font-sans-serif);
-  font-weight: 400;
   color: var(--font-primary-color);
   background-color: var(--primary-bg-color);
 
   max-width: 1024px;
   margin: 0 auto;
-
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 [data-color-scheme="dark"] {
@@ -53,15 +47,7 @@
 
   color-scheme: dark;
 
-  img,
-  button,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
+  img {
     opacity: 70%;
   }
 
@@ -73,7 +59,6 @@
 }
 
 * {
-  @apply transition-all;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -91,16 +76,6 @@ img {
 html,
 body {
   scroll-behavior: smooth;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 a {
