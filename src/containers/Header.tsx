@@ -1,13 +1,24 @@
+import { useState } from "react";
 import HeaderView from "../components/Header_View";
 import NavBar from "../components/NavBar";
 import ImageUploaderForm from "../components/UploadProduct";
 
 const Header = () => {
+  const [uploadProductActive, setUploadProductActive] = useState(true);
   return (
     <header className="container mx-auto">
-      <NavBar />
+      <NavBar
+        onUploadProductClick={() => {
+          setUploadProductActive(true);
+        }}
+      />
       <HeaderView />
-      <ImageUploaderForm />
+      <ImageUploaderForm
+        onCloseClick={() => {
+          setUploadProductActive(false);
+        }}
+        active={uploadProductActive}
+      />
     </header>
   );
 };
