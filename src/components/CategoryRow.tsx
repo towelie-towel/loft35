@@ -2,7 +2,7 @@ interface IProps {
   categories: string[][];
 }
 
-const ProductCategories: React.FC<IProps> = ({ categories }) => {
+const CategoriesRow: React.FC<IProps> = ({ categories }) => {
   return (
     <div className="flex w-full flex-col pb-8">
       <div className="mx-auto w-[90%] py-4">
@@ -26,4 +26,4 @@ const ProductCategories: React.FC<IProps> = ({ categories }) => {
   );
 };
 
-export default ProductCategories;
+export default CategoriesRow;

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { NextSlider, PrevSlider } from "~/components/Icons";
 import { gsap } from "gsap";
-import { NextSlider, PrevSlider } from "./Icons";
-import { Card } from "./Card";
+import Image from "next/image";
 
 interface CardSlider {
   src: string;
@@ -80,11 +80,22 @@ const CardSlider: React.FC<{ images: CardSlider[] }> = ({ images }) => {
             ref={(item: HTMLDivElement) => (cardsRef.current[index] = item)}
             className="flex-shrink-0"
           >
-            <Card
-              style={{ "--slider-width": `${sliderWidth}px` }}
-              src={image.src}
-              name={image.name}
-            />
+            <div
+              style={{ width: `${sliderWidth || 200}px` }}
+              className="flex flex-col items-center justify-center"
+            >
+              <div className="relative w-[90%] rounded-md pb-[25%] shadow-lg">
+                <Image
+                  sizes="(max-width: 425px) 50vw,
+                  (max-width: 768px) 75vw,
+                  (max-width: 1024px) 100vw"
+                  priority
+                  src={image.src}
+                  alt={image.name}
+                  fill
+                />
+              </div>
+            </div>
           </div>
         ))}
       </div>

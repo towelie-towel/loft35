@@ -1,12 +1,12 @@
+import ProductItem from "./ProductItem";
 import type { IProduct } from "../utils/data";
-import ProductItem from "./Product_Item";
 
 interface IProps {
   categoryProducts: IProduct[];
   categoryGroup: string[];
 }
 
-const CategoryGroup: React.FC<IProps> = ({
+const CategoryItems: React.FC<IProps> = ({
   categoryProducts,
   categoryGroup,
 }) => {
@@ -25,4 +25,4 @@ const CategoryGroup: React.FC<IProps> = ({
   );
 };
 
-export default CategoryGroup;
+export default CategoryItems;

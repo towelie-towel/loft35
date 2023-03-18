@@ -1,6 +1,6 @@
-import CategoryGroup from "../components/Category_Group";
-import ProductCategories from "../components/Product_Categories";
-import type { IProduct } from "../utils/data";
+import CategoryItems from "~/components/CategoryItems";
+import CategoriesRow from "~/components/CategoryRow";
+import type { IProduct } from "~/utils/data";
 
 interface IProps {
   products: IProduct[];
@@ -19,13 +19,13 @@ const categories = [
 const ProductsSroll: React.FC<IProps> = ({ products }) => {
   return (
     <div className="m-auto w-[95%] rounded-b-lg bg-[var(--secondary-bg-color)]">
-      <ProductCategories categories={categories} />
+      <CategoriesRow categories={categories} />
       {categories.map((categoryGroup) => {
         const categoryProducts = products.filter((product) =>
           categoryGroup.includes(product.category)
         );
         return (
-          <CategoryGroup
+          <CategoryItems
             key={categoryGroup.join()}
             categoryProducts={categoryProducts}
             categoryGroup={categoryGroup}

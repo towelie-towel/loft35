@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NavBar from "~/components/NavBar";
 import ImageUploaderForm from "~/components/UploadProduct";
-import CardSlider from "~/components/Card_Slider";
+import CardsSlider from "~/components/CardsSlider";
 import data from "~/utils/data";
 
 const Header = () => {
@@ -14,11 +14,11 @@ const Header = () => {
         }}
       />
       <div className="container m-auto flex flex-col items-center justify-center">
-      <div className="w-[95%] rounded-t-lg bg-[var(--secondary-bg-color)] pt-8 shadow-lg transition-all">
-        <CardSlider images={data.slider} />
-        <div className="h-5"></div>
+        <div className="w-[95%] rounded-t-lg bg-[var(--secondary-bg-color)] pt-8 shadow-lg transition-all">
+          <CardsSlider images={data.slider} />
+          <div className="h-5"></div>
+        </div>
       </div>
-    </div>
       <ImageUploaderForm
         onCloseClick={() => {
           setUploadProductActive(false);

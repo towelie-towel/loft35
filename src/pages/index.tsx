@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Header from "~/containers/Header";
 import Footer from "~/containers/Footer";
-import ProductsSroll from "~/containers/Product_Scroll";
+import ProductsSroll from "~/containers/ProductScroll";
 import data from "~/utils/data";
 
 const Home: NextPage = () => {
