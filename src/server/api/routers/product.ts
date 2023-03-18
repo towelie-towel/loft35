@@ -21,7 +21,7 @@ const productSchema = z.object({
   categoryName: z.string(),
 });
 
-export const productHandlerRouter = createTRPCRouter({
+export const productRouter = createTRPCRouter({
   get: publicProcedure
     .input(z.object({ productID: z.number() }))
     .query(({ ctx, input }) => {

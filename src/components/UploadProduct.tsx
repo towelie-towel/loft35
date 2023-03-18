@@ -29,7 +29,7 @@ const ImageUploadForm: React.FC<IProps> = ({
 
   const [loadingState, setLoadingState] = useState<string | undefined>();
 
-  const productList = api.productHandler.create.useMutation({});
+  const productList = api.product.create.useMutation({});
 
   const onSubmit = async (data: FormValues) => {
     if (!data.image[0]) {
@@ -71,6 +71,7 @@ const ImageUploadForm: React.FC<IProps> = ({
       onClick={onCloseClick}
     >
       <form
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(onSubmit)}
         onClick={(e) => {
           e.stopPropagation();
@@ -131,11 +132,7 @@ const ImageUploadForm: React.FC<IProps> = ({
           />
           {errors.categoryName && <span>This field is required</span>}
         </div>
-        <button
-          type="submit"
-          className="btn-primary"
-          disabled={!watch("image")}
-        >
+        <button type="submit" className="loading " disabled={!watch("image")}>
           Upload
         </button>
       </form>

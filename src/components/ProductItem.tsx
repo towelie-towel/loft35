@@ -1,10 +1,10 @@
 import React from "react";
-import type { IProduct } from "../utils/data";
 import Image from "next/image";
 import { AddToCartIcon } from "./Icons";
+import type { Product } from "@prisma/client";
 
 interface IProps {
-  product: IProduct;
+  product: Product;
 }
 
 const ProductItem: React.FC<IProps> = ({ product }) => {
@@ -13,8 +13,8 @@ const ProductItem: React.FC<IProps> = ({ product }) => {
       <div className="product-card m-auto w-[92%] shadow-md">
         <div className="relative w-full overflow-hidden rounded-t-lg pb-[100%]">
           <Image
-            src={product.image.src}
-            alt={product.image.name}
+            src={product.image}
+            alt={product.name}
             fill
             priority
             sizes="(max-width: 425px) 50vw,

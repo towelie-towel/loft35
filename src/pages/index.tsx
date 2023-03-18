@@ -3,7 +3,6 @@ import Head from "next/head";
 import Header from "~/containers/Header";
 import Footer from "~/containers/Footer";
 import ProductsSroll from "~/containers/ProductScroll";
-import data from "~/utils/data";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
             Click aquí para stalkear nuestro Instagram ;)
           </button>
         </div>
-        <ProductsSroll products={data.products} />
+        <ProductsSroll />
       </main>
       <Footer />
     </>

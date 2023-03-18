@@ -1,34 +1,24 @@
 import CategoryItems from "~/components/CategoryItems";
-import CategoriesRow from "~/components/CategoryRow";
-import type { IProduct } from "~/utils/data";
+// import CategoriesRow from "~/components/CategoryRow";
 
-interface IProps {
-  products: IProduct[];
-}
-const categories = [
-  ["Pants"],
-  ["T-Shirts"],
-  ["Sweaters", "Coats"],
-  ["Shirts"],
-  ["Blouses"],
-  ["Bags"],
-  ["Lencerie"],
-  ["Others"],
-];
+import { api } from "~/utils/api";
 
-const ProductsSroll: React.FC<IProps> = ({ products }) => {
+const ProductsSroll: React.FC = () => {
+  const { data: productData } = api.product.getAll.useQuery();
+  const { data: categoryData } = api.category.getAll.useQuery();
+
   return (
     <div className="m-auto w-[95%] rounded-b-lg bg-[var(--secondary-bg-color)]">
-      <CategoriesRow categories={categories} />
-      {categories.map((categoryGroup) => {
-        const categoryProducts = products.filter((product) =>
-          categoryGroup.includes(product.category)
+      {/* <CategoriesRow categories={categoryData} /> */}
+      {categoryData?.map((categoryGroup) => {
+        const categoryProducts = productData?.filter(
+          (product) => categoryGroup.id === product.categoryId
         );
         return (
           <CategoryItems
-            key={categoryGroup.join()}
+            key={categoryGroup.id}
             categoryProducts={categoryProducts}
-            categoryGroup={categoryGroup}
+            categoryGroup={categoryGroup.name}
           />
         );
       })}
