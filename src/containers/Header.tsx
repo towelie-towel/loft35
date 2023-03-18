@@ -1,7 +1,8 @@
 import { useState } from "react";
-import HeaderView from "../components/Header_View";
-import NavBar from "../components/NavBar";
-import ImageUploaderForm from "../components/UploadProduct";
+import NavBar from "~/components/NavBar";
+import ImageUploaderForm from "~/components/UploadProduct";
+import CardSlider from "~/components/Card_Slider";
+import data from "~/utils/data";
 
 const Header = () => {
   const [uploadProductActive, setUploadProductActive] = useState(false);
@@ -12,7 +13,12 @@ const Header = () => {
           setUploadProductActive(true);
         }}
       />
-      <HeaderView />
+      <div className="container m-auto flex flex-col items-center justify-center">
+      <div className="w-[95%] rounded-t-lg bg-[var(--secondary-bg-color)] pt-8 shadow-lg transition-all">
+        <CardSlider images={data.slider} />
+        <div className="h-5"></div>
+      </div>
+    </div>
       <ImageUploaderForm
         onCloseClick={() => {
           setUploadProductActive(false);

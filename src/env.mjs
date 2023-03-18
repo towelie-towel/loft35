@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 /**
- * Specify your server-side environment variables schema here.
- * This way you can ensure the app isn't built with invalid env vars.
+ * Specify your server-side environment variables schema here. This way you can ensure the app isn't
+ * built with invalid env vars.
  */
 const server = z.object({
-  //DATABASE_URL: z.string().url(),
+  DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
   NEXTAUTH_SECRET:
     process.env.NODE_ENV === "production"
@@ -24,21 +24,21 @@ const server = z.object({
 });
 
 /**
- * Specify your client-side environment variables schema here.
- * This way you can ensure the app isn't built with invalid env vars.
- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+ * Specify your client-side environment variables schema here. This way you can ensure the app isn't
+ * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
 });
 
 /**
- * You can't destruct `process.env` as a regular object in the Next.js
- * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
+ * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
+ * middlewares) or client-side so we need to destruct manually.
+ *
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  // DATABASE_URL: process.env.DATABASE_URL,
+  DATABASE_URL: process.env.DATABASE_URL,
   NODE_ENV: process.env.NODE_ENV,
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
