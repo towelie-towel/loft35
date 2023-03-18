@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useEffect } from "react";
 
 type CardProps = {
   src: string;
@@ -11,10 +10,6 @@ export const Card: React.FC<CardProps & Record<string, unknown>> = ({
   name,
   ...restProps
 }) => {
-  useEffect(() => {
-    return;
-  });
-
   return (
     <div
       {...restProps}
