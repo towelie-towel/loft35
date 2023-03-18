@@ -52,7 +52,7 @@ const ImageUploadForm: React.FC<IProps> = ({
       },
       {
         onError: (e) => {
-          setLoadingState("Error");
+          setLoadingState("Error" + ": " + e.message);
           console.error(e);
         },
         onSuccess(data) {
