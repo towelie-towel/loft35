@@ -32,6 +32,10 @@ export const productHandlerRouter = createTRPCRouter({
       });
     }),
 
+  getAll: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.product.findMany();
+  }),
+
   create: publicProcedure
     .input(productSchema)
     .mutation(async ({ ctx, input }) => {
