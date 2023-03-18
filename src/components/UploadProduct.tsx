@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { api } from "../utils/api";
+import { useState } from "react";
 
 interface FormValues {
   name: string;
@@ -15,8 +16,6 @@ interface IProps {
   onCloseClick: () => void;
 }
 
-const productList = api.productHandler.create.useMutation({});
-
 const ImageUploadForm: React.FC<IProps> = ({
   active = false,
   onCloseClick,
@@ -28,6 +27,10 @@ const ImageUploadForm: React.FC<IProps> = ({
     watch,
   } = useForm<FormValues>();
 
+  const [loadingState, setLoadingState] = useState<string | undefined>();
+
+  const productList = api.productHandler.create.useMutation({});
+
   const onSubmit = async (data: FormValues) => {
     if (!data.image[0]) {
       throw new Error("submit isnt getting any image");
@@ -35,6 +38,7 @@ const ImageUploadForm: React.FC<IProps> = ({
 
     const arrayBuffer = await data.image[0].arrayBuffer();
     const fileBuffer = Buffer.from(arrayBuffer);
+    setLoadingState("Loading");
 
     productList.mutate(
       {
@@ -48,9 +52,11 @@ const ImageUploadForm: React.FC<IProps> = ({
       },
       {
         onError: (e) => {
+          setLoadingState("Error");
           console.error(e);
         },
         onSuccess(data) {
+          setLoadingState(data.name + "uploaded");
           console.log("succes", data);
         },
       }
@@ -72,6 +78,7 @@ const ImageUploadForm: React.FC<IProps> = ({
         className="absolute top-1/2 left-1/2 flex h-auto w-[90%] max-w-xs -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center overflow-x-hidden rounded-lg bg-[var(--secondary-bg-color)] py-5 shadow-lg"
       >
         <div onClick={onCloseClick}>close</div>
+        {loadingState && <div>{loadingState}</div>}
         <div className="mb-4 flex flex-col items-center">
           <label htmlFor="image" className="mb-2 block font-bold text-white">
             Image
