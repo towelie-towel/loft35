@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import ImageUploaderForm from "../components/UploadProduct";
 
 const Header = () => {
-  const [uploadProductActive, setUploadProductActive] = useState(true);
+  const [uploadProductActive, setUploadProductActive] = useState(false);
   return (
     <header className="container mx-auto">
       <NavBar
